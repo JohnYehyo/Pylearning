@@ -53,8 +53,6 @@
 d = {'a': '叶', 'b': '佳', 'c': '楠'}
 # print(d)
 # print(len(d))
-# dd = dict(first='叶', second='佳', third='楠')
-# print(len(dd))
 # ddd = [('a', '叶', 'b', '佳', 'c', '楠'), ('a', '楠', 'b', '佳', 'c', '叶'), ('a', '叶', 'b', '楠', 'c', '佳')]
 # print(ddd)
 # print(len(ddd))
