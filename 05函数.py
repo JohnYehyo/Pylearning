@@ -100,13 +100,13 @@ import module1
 
 # 这里foo中是声明了一个a=200的局部变量, print(a) 也不会获取到他而是使用自己的局部变量a还为100,想要改变a的值输出200 可以设置全局变量
 
-# def foo():
-#     global a
-#     a = 200
-#     print(a)
-#
-#
-# if __name__ == '__main__':
-#     a = 100
-#     foo()
-#     print(a)
+def foo():
+    global a
+    a = 200
+    print(a)
+
+
+if __name__ == '__main__':
+    a = 100
+    foo()
+    print(a)
