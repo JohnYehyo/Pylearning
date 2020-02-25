@@ -10,5 +10,5 @@ class Coder(object):
     def code(self, time):
         print(f'{self.name},性别{self.gender},{self.language}开发工程师已经编程了{time}')
 
-    # if __name__ == '__main__':
+    if __name__ == '__main__':
         print('我执行了!')
