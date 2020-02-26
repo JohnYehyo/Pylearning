@@ -4,11 +4,11 @@ from Clock import Clock
 from Coder import Coder as co
 from CoderPrivate import CoderPrivate
 from Archmage import Archmage
-# 1. 创建对象使用对象
 from CoderProperty import CoderProperty
 from CoderSlots import CoderSlots
 
 
+# 1. 创建对象使用对象
 def first():
     coder = co('叶佳楠', '男', 'JAVA')
     print(coder.name)
