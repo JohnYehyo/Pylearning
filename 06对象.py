@@ -1,6 +1,9 @@
+from time import sleep, localtime, time
+
+from Clock import Clock
 from Coder import Coder as co
 from CoderPrivate import CoderPrivate
-
+from Archmage import Archmage
 # 1. 创建对象使用对象
 from CoderProperty import CoderProperty
 from CoderSlots import CoderSlots
@@ -79,9 +82,54 @@ def fourth():
     print(coderSlots._other)
 
 
+# 5. 静态方法和类方法
+"""
+一点理解:
+    什么时候创建静态方法和类方法而不创建对象方法?
+    比如黑暗大法师类我们传入头、左手、右手、左脚、右脚召唤出黑暗大法师
+    这个召唤方法就是对象方法 但是怎么判断传入的五个参数是上述的呢 我们
+    可以创建一个检测是否是上述要求的方法 这个方法早于黑暗大法师对象创建
+    因此就是这个类的方法 这个方法可以使用静态方法
+"""
+
+
+def fifth():
+    a, b, c, d, e = '头', '左手', '右手', '左脚', '右脚'
+    if Archmage.check(a, b, c, d, e):
+        archmage = Archmage(a, b, c, d, e)
+        print(archmage.create())
+        print(archmage.shout())
+    else:
+        print('条件不足,无法召唤')
+
+
+"""
+类方法和静态方法类似代表的是当前类相关的信息的对象（类本身也是一个对象，有的地方也称之为类的元数据对象）
+通过这个参数我们可以获取和类相关的信息并且可以创建出类的对象, 类方法的第一个参数一般约定命名cls
+"""
+
+
+def sixth():
+    # 通过类方法创建对象并获取系统时间
+    # 体会一下三种获取对象的区别 第一种和第三种输出结果一致为什么
+    # (1)
+    clock = Clock.now()
+    # (2)
+    # clock = Clock()
+    # (3)
+    # ctime = localtime(time())
+    # clock = Clock(ctime.tm_hour, ctime.tm_min, ctime.tm_sec)
+    while True:
+        print(clock.show())
+        sleep(1)
+        clock.run()
+
+
 # 为了避免被别的类引用后直接执行详情参见05函数,例子可以参考Coder中加不加if __name__ == '__main__':时这个类执行时的输出
 if __name__ == '__main__':
     # first()
     # second()
     # third()
-    fourth()
+    # fourth()
+    # fifth()
+    sixth()
