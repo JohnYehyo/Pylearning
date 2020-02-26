@@ -1,8 +1,10 @@
 from Coder import Coder as co
 from CoderPrivate import CoderPrivate
 
-
 # 1. 创建对象使用对象
+from CoderProperty import CoderProperty
+
+
 def first():
     coder = co('叶佳楠', '男', 'JAVA')
     print(coder.name)
@@ -32,7 +34,30 @@ def second():
 隐喻
 """
 
+# 3. @property装饰器
+"""
+类似JAVA的set、get方法
+Python一般建议给属性加单下划线说明属性是受保护的不建议直接访问,所以可以通过
+setter修改器和getter访问器的方法来对属性进行操作
+"""
+
+
+def third():
+    coderProperty = CoderProperty('叶佳楠', '男', 'JAVA')
+    coderProperty.code('1小时')
+    coderProperty.name = '楠佳叶'
+    # coderProperty._name = '佳楠叶'  # 推荐用第一种装饰器方法,不推荐第二种直接访问属性
+    coderProperty.gender = '女'
+    # coderProperty.language = 'Python'  # 会报AttributeError: can't set attribute
+    coderProperty.code('1小时')
+    print(coderProperty.name)
+    # print(coderProperty._name)  # 推荐用第一种装饰器方法,不推荐第二种直接访问属性
+    print(coderProperty.gender)
+    print(coderProperty.language)
+
+
 # 为了避免被别的类引用后直接执行详情参见05函数,例子可以参考Coder中加不加if __name__ == '__main__':时这个类执行时的输出
 if __name__ == '__main__':
-    first()
-    second()
+    # first()
+    # second()
+    third()
