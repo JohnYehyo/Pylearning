@@ -3,6 +3,7 @@ from CoderPrivate import CoderPrivate
 
 # 1. 创建对象使用对象
 from CoderProperty import CoderProperty
+from CoderSlots import CoderSlots
 
 
 def first():
@@ -55,9 +56,32 @@ def third():
     print(coderProperty.gender)
     print(coderProperty.language)
 
+    # 因为Python是一门动态语言,所以可以在程序运行时对属性解绑或者绑定新属性和方法
+    coderProperty._other = '无'
+    print(coderProperty._other)
+
+
+# 4. __slots__限定属性
+# 限定自定义类型的对象只能绑定某些属性
+def fourth():
+    coderSlots = CoderSlots('叶佳楠', '男', 'JAVA')
+    coderSlots.code('1小时')
+    coderSlots.name = '楠佳叶'
+    coderSlots.gender = '女'
+    coderSlots.language = 'Python'
+    coderSlots.code('1小时')
+    print(coderSlots.name)
+    print(coderSlots.gender)
+    print(coderSlots.language)
+
+    # 由于类中加上了显示属性所以无法新增属性 AttributeError: 'CoderSlots' object has no attribute '_other'
+    coderSlots._other = '无'
+    print(coderSlots._other)
+
 
 # 为了避免被别的类引用后直接执行详情参见05函数,例子可以参考Coder中加不加if __name__ == '__main__':时这个类执行时的输出
 if __name__ == '__main__':
     # first()
     # second()
-    third()
+    # third()
+    fourth()
