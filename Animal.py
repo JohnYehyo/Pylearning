@@ -1,5 +1,10 @@
 from abc import ABCMeta, abstractmethod
 
+"""
+python没有直接提供对抽象累的支持,这里是通过abc模块的
+ABCMeta元类和abstractmethod包装器来达到抽象类的效果
+"""
+
 
 class Animal(object, metaclass=ABCMeta):
     """动物"""
