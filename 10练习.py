@@ -51,6 +51,48 @@ def oneEditAway(self, first: str, second: str) -> bool:
         return True
 
 
+def compressString(self, S: str) -> str:
+    """
+    字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。
+    比如，字符串aabcccccaaa会变为a2b1c5a3。若“压缩”后的字符串没有变短，则返
+    回原先的字符串。你可以假设字符串中只包含大小写英文字母（a至z）
+    :param self:
+    :param S:
+    :return:
+    """
+
+    """
+    第一次的错误思路是用截取最后一个字符作为数量没有考虑到数量大于10后占两位的情况
+    """
+    if S == '':
+        return S
+
+    autoList = []
+    for i in range(0, len(S)):
+
+        """
+            s[i : i+1]是本次循环的字符
+        """
+        if i == 0:
+            autoList.append(S[0])
+            autoList.append('1')
+        elif S[i:i + 1] == S[i - 1:i]:
+            va = autoList[(len(autoList) - 1)]
+            num = int(va) + 1
+            autoList.pop()
+            autoList.append(str(num))
+        else:
+            autoList.append(S[i:i + 1])
+            autoList.append('1')
+
+    finals = "".join(autoList)
+
+    return finals if len(finals) < len(S) else S
+
+
 if __name__ == '__main__':
     print(canPermutePalindrome(self='', s='tactcoa'))
-    # print(oneEditAway(self='', first='teacher', second='teachy'))
+    print(oneEditAway(self='', first='teacher', second='teachy'))
+    print(compressString(self='',
+                         S='rrrrLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLvvvvvvvvvvvKKKKKKKKKKKKKKiiiiiiiiiiiiiiiiiiiiiiiiiiiiZZZZZZZZZZZZZZZZZZZIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIoooooooooooooooooooooooooooooooooooobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbvvvvvvvvvvvvvvvvvvvvvvvllllllllllllllllllllllllllllllllllllllllBBBBBBBKKKKKKKKKKKKKKfffffffffffffffffffffffffffffffffffDDDDDDDDDDDDDDDDDDDDDDDDDDDsssssssssssssssssssssssssssssssssssssssNNNNNZZZZZZZZZZZZZZZZZZZZZZZZZZNNNNNNNNNNDDDDDDDDDDDDDDDTTTTT'))
+
