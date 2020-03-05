@@ -5,6 +5,8 @@ s = "不使人间造孽孽孽钱"
 # print(s[0:])
 # print(s[:2])
 # print(s[0:3])
+#反转
+# print(s[::-1])
 
 # # 步长限制取值
 # print(s[0:5:3])
@@ -41,3 +43,9 @@ print(sss.split(",", 3))
 # ONCLICK="window.history.back()"></FORM>
 # </BODY></HTML>'''
 # print(ss)
+
+#反转
+#使用字符串切片的方法
+print(sss[::-1])
+#使用reversed()函数
+print(''.join(reversed(sss)))
