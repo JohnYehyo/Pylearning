@@ -89,10 +89,30 @@ def compressString(self, S: str) -> str:
 
     return finals if len(finals) < len(S) else S
 
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+def removeDuplicateNodes(self, head: ListNode) -> ListNode:
+    """
+    编写代码，移除未排序链表中的重复节点。保留最开始出现的节点。
+    :param self:
+    :param head:
+    :return:
+    """
+    set1 = set(head)
+    list1 = list(set1)
+    # str = str(set1)
+    # list1 = list(eval(str))
+    return list1
+
+
 
 if __name__ == '__main__':
-    print(canPermutePalindrome(self='', s='tactcoa'))
-    print(oneEditAway(self='', first='teacher', second='teachy'))
-    print(compressString(self='',
-                         S='rrrrLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLvvvvvvvvvvvKKKKKKKKKKKKKKiiiiiiiiiiiiiiiiiiiiiiiiiiiiZZZZZZZZZZZZZZZZZZZIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIoooooooooooooooooooooooooooooooooooobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbvvvvvvvvvvvvvvvvvvvvvvvllllllllllllllllllllllllllllllllllllllllBBBBBBBKKKKKKKKKKKKKKfffffffffffffffffffffffffffffffffffDDDDDDDDDDDDDDDDDDDDDDDDDDDsssssssssssssssssssssssssssssssssssssssNNNNNZZZZZZZZZZZZZZZZZZZZZZZZZZNNNNNNNNNNDDDDDDDDDDDDDDDTTTTT'))
+    # print(canPermutePalindrome(self='', s='tactcoa'))
+    # print(oneEditAway(self='', first='teacher', second='teachy'))
+    # print(compressString(self='',
+    #                      S='rrrrLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLvvvvvvvvvvvKKKKKKKKKKKKKKiiiiiiiiiiiiiiiiiiiiiiiiiiiiZZZZZZZZZZZZZZZZZZZIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIoooooooooooooooooooooooooooooooooooobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbvvvvvvvvvvvvvvvvvvvvvvvllllllllllllllllllllllllllllllllllllllllBBBBBBBKKKKKKKKKKKKKKfffffffffffffffffffffffffffffffffffDDDDDDDDDDDDDDDDDDDDDDDDDDDsssssssssssssssssssssssssssssssssssssssNNNNNZZZZZZZZZZZZZZZZZZZZZZZZZZNNNNNNNNNNDDDDDDDDDDDDDDDTTTTT'))
 
+    print(removeDuplicateNodes(self='', head=[1, 1, 1, 2, 3]))
