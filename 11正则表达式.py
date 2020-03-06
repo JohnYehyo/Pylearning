@@ -1,6 +1,8 @@
 import re
 import traceback
 
+phonePattern = re.compile(r'1[3456789]\d{9}')
+
 
 def user():
     """
@@ -52,17 +54,31 @@ def phoneAction():
     拆分匹配文本中的手机号码并写到新文本
     :return:
     """
-    pattern = re.compile(r'1[3456789]\d{9}')
     try:
         with open('phone.txt', 'r', encoding='UTF-8') as info:
             for line in info:
-                for i in pattern.finditer(line):
+                for i in phonePattern.finditer(line):
                     with open('realPhone.txt', 'a') as phone:
                         phone.write(i.group() + '\n')
     except Exception:
         traceback.print_exc()
 
 
+def replace():
+    text = '三年二班周杰伦 strong!'
+    parttern1 = re.compile('[二周杰伦strong]')
+    parttern2 = re.compile('[二周]|strong[!]|杰[伦]')
+    parttern3 = re.compile('[二班]|周杰伦')
+    newText1 = re.sub(parttern1, "*", text)
+    newText2 = re.sub(parttern2, "*", text)
+    newText3 = re.sub(parttern3, "*", text)
+    print(newText1)
+    print(newText2)
+    print(newText3)
+
+
+
 if __name__ == '__main__':
     # user()
-    phone()
+    # phone()
+    replace()
