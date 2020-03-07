@@ -5,6 +5,10 @@ from time import sleep, time
 
 from DownLoadThread import DownLoadThread
 from DownLoadProcess import DownLoadProcess
+from Money import Money
+from MoneyLock import MoneyLock
+from MoneyThread import MoneyThread
+from MoneyThread2 import MoneyThread2
 
 
 def download(name):
@@ -15,6 +19,7 @@ def download(name):
 
 
 if __name__ == '__main__':
+
     # 1 普通下载
     # download('高性能Mysql.pdf')
     # download('深入理解JAVA虚拟机.pdf')
@@ -44,15 +49,15 @@ if __name__ == '__main__':
     # print(f'下载完成耗时{(end - start):.2f}秒')
 
     # 4 封装自定义进程类调用
-    start = time()
-    process3 = DownLoadProcess('高性能Mysql.pdf')
-    process4 = DownLoadProcess('深入理解JAVA虚拟机.pdf')
-    process3.start()
-    process4.start()
-    process3.join()
-    process4.join()
-    end = time()
-    print(f'下载完成耗时{(end - start):.2f}秒')
+    # start = time()
+    # process3 = DownLoadProcess('高性能Mysql.pdf')
+    # process4 = DownLoadProcess('深入理解JAVA虚拟机.pdf')
+    # process3.start()
+    # process4.start()
+    # process3.join()
+    # process4.join()
+    # end = time()
+    # print(f'下载完成耗时{(end - start):.2f}秒')
 
     # 5 封装自定义线程类调用
     # start = time()
@@ -64,3 +69,26 @@ if __name__ == '__main__':
     # thread4.join()
     # end = time()
     # print(f'下载完成耗时{(end - start):.2f}秒')
+
+    # 6 通过模拟账户每次加1元加100次来看多线程执行资源共享问题
+    # # money = Money()
+    # money = MoneyLock()
+    # threats = []
+    # for i in range(100):
+    #     t = MoneyThread(money, 1)
+    #     threats.append(t)
+    #     t.start()
+    # for j in threats:
+    #     j.join()
+    # count = money.count
+    # print(f'账户余额{count}元')
+
+    threats = []
+    for i in range(100):
+        t = MoneyThread2(1)
+        threats.append(t)
+        t.start()
+    for j in threats:
+        j.join()
+    count = MoneyThread2.count
+    print(f'账户余额{count}元')
