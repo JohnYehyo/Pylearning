@@ -10,12 +10,14 @@ class MoneyLock(object):
         self._lock = Lock()
 
     def add(self, money):
+        # 获取锁
         self._lock.acquire()
         try:
-            newCount = self._count + money
+            self._count += money
             sleep(0.1)
-            self._count = newCount
+            print(f'账户到账{money}元')
         finally:
+            # 释放锁
             self._lock.release()
 
     @property
