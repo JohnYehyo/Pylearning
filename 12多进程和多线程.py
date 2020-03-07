@@ -8,7 +8,6 @@ from DownLoadProcess import DownLoadProcess
 from Money import Money
 from MoneyLock import MoneyLock
 from MoneyThread import MoneyThread
-from MoneyThread2 import MoneyThread2
 
 
 def download(name):
@@ -71,24 +70,15 @@ if __name__ == '__main__':
     # print(f'下载完成耗时{(end - start):.2f}秒')
 
     # 6 通过模拟账户每次加1元加100次来看多线程执行资源共享问题
-    # # money = Money()
-    # money = MoneyLock()
-    # threats = []
-    # for i in range(100):
-    #     t = MoneyThread(money, 1)
-    #     threats.append(t)
-    #     t.start()
-    # for j in threats:
-    #     j.join()
-    # count = money.count
-    # print(f'账户余额{count}元')
-
+    # 线程不安全
+    # money = Money()
+    # 线程安全
+    money = MoneyLock()
     threats = []
     for i in range(100):
-        t = MoneyThread2(1)
+        t = MoneyThread(money, 1)
         threats.append(t)
         t.start()
     for j in threats:
         j.join()
-    count = MoneyThread2.count
-    print(f'账户余额{count}元')
+    print(f'账户余额{money.count}元')
