@@ -1,18 +1,19 @@
+
 from datetime import datetime
 from socket import socket, AF_INET, SOCK_STREAM
 
 
-class TcpDemo(object):
+class SendEmailDemo(object):
 
-    def __init__(self, address, port):
-        self._address = address
-        self._port = port
+    def __init__(self):
+        pass
+
 
     """
-        TCP服务端
-    """
+    
 
-    def server_action(self):
+    """
+    def send(self):
         # 1.创建套接字对象并指定使用哪种传输服务
         # class socket:
         #     family: int
@@ -29,7 +30,7 @@ class TcpDemo(object):
         #       SOCK_RAW - 原始套接字
         server = socket(family=AF_INET, type=SOCK_STREAM)
         # 2 绑定ID和端口
-        server.bind((self._address, self._port))
+        server.bind(('127.0.0.1', 8988))
         # 3 开启监听
         server.listen(512)
         print('服务器启动...')
@@ -45,17 +46,4 @@ class TcpDemo(object):
             client.send(str(datetime.now()).encode('utf-8'))
             # 6 断开连接
             client.close
-
-    """
-        TCP客户端
-    """
-
-    def client_action(self):
-        # 1.创建套接字对象默认使用IPv4和TCP协议
-        client = socket()
-        # 2.连接到服务器(需要指定IP地址和端口)
-        client.connect((self._address, self._port))
-        msg = client.recv(1024).decode('utf-8')
-        print(msg)
-        client.close
 
