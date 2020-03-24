@@ -9,7 +9,8 @@ def reveal():
     :return:
     """
     content = '你看到我了'
-    while True:
+    n = 0
+    while n < 10:
         # windows
         os.system('cls')
         # linux
@@ -17,7 +18,7 @@ def reveal():
         print(content)
         time.sleep(0.5)
         content = content[1:] + content[0]
-
+        n += 1
 
 def randomStr(length):
     """
@@ -37,6 +38,20 @@ def randomStr(length):
     return mark
 
 
+def getSuffix(filename):
+    """
+    返回文件名后缀
+    :param filename:
+    :return:
+    """
+    index = filename.rfind('.')
+    print(index)
+    if 0 < index < len(filename) - 1:
+        return filename[index + 1:]
+    return '无后缀'
+
+
 if __name__ == '__main__':
-    # reveal()
+    reveal()
     print(randomStr(6))
+    print(getSuffix('test.txt'))
